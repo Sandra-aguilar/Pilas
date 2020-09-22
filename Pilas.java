@@ -26,7 +26,7 @@ public class Pilas {
                  
                    char [] abecedario = {'a','b','c','d','e','f','g','h','i','j','k','l','m','n','ñ','o','p','q','r','s','t','u','v','w','x','y','z'};
                      
-                    //char pila[tope] = ( abecedario.length );
+                    char pila[tope] = ( abecedario.length );
                     tope++;
                     System.out.println(abecedario );
                     
