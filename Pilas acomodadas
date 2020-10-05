@@ -1,0 +1,134 @@
+package Abecedario3;
+import java.util.Scanner;
+//Sandy
+public class Abecedario3 {
+
+    int tope,comp;
+    public char[] abecedario = new char[26];
+    
+
+   
+//Llenar
+    public void Llenar() {
+        for (int i = 0; i < 26; i++) {
+            abecedario[i] = (char) (Math.random() * 26 + 'A'); //Sentencia para realizar la parte random 
+            for (int j = 0; j < i; j++) {                          //Realiza una comparacion para descartar valores repetidos
+                if (abecedario[i] == abecedario[j]) {  
+                    i--;                     //imprime una sola vez una letra
+                }
+            }
+        }
+        for (int k = 0; k < 26; k++) {
+             tope++;
+         }
+        System.out.println("Datos agregados");
+          }
+ 
+    //Opcion mostrar
+    public void Mostrar() {
+       if (comp!=1){
+            for (int i = tope - 1; i >= 0; i--) {
+                comp++;
+                System.out.print(abecedario[i]);  
+            }
+        } 
+       else {
+             for (int i = tope - 1; i >= 0; i--) {
+                System.out.print(abecedario[i]);  
+            }
+        }
+       
+    }
+    
+   
+    //Opcion eliminar
+    public void Eliminar() {
+        System.out.println("Valor Eliminado");
+        tope--;
+        // Se hace un decremento del valor tope y ese sera el valor eliminado 
+    }
+    
+    
+    //Opcion ordenar
+    public void Ordenar() {
+       if (tope <25){         //Cuado tope sea menor a 25 
+         int i, j, opc; //Declaracion de variables
+        for (i = 0; i < 26; i++) { //Si el iterador que en este caso es i es menor a 26 hara un incremento
+            for (j = 0; j < 26 - 1; j++) { //Al iterador j en este caso se le restara uno a 26 ya que ese es el valor de abecedario
+                if (abecedario[j] > abecedario[j + 1]) {
+                    opc = abecedario[j];
+                    abecedario[j] = abecedario[j + 1];
+                    abecedario[j + 1] = (char) opc;
+                }
+            }
+        }
+        System.out.print("Se ha ordenado satisfactoriamente la pila");
+        for (i = 0; i < 26; i++) {
+            System.out.print(abecedario[i]);
+        }  
+       } int i, j, aux;
+        for (i = 0; i < 26; i++) {
+            for (j = 0; j < 26 - 1; j++) {
+                if (abecedario[j] > abecedario[j + 1]) {
+                    aux = abecedario[j];
+                    abecedario[j] = abecedario[j + 1];
+                    abecedario[j + 1] = (char) aux;
+                }
+            }
+        }
+        System.out.print("Se ha ordenado satisfactoriamente la pila");
+        for (i = 0; i < 26; i++)  { //Hace una impresion empezandode a......z
+            System.out.print(abecedario[i]);
+        }
+
+    }
+    
+    //Insertar manualemente
+    public void Insertar(char i) {
+        if (tope < 26) {
+            abecedario[tope] = i;
+            tope++;
+            System.out.println("El dato se agrego");
+
+        } else {
+            System.out.println("La pila esta llena");
+        }
+    }
+
+     public static void main(String[] args) {
+        Abecedario3 n = new Abecedario3();
+        Abecedario3 m = new Abecedario3();
+        Scanner sc = new Scanner(System.in);
+        int opt = 0;
+        do {
+            System.out.println("\n》》》》》》MENU PILAS《《《《《《《\n"
+                    + " 1 llenar aleatoriamente\n"
+                    + " 2 Mostrar pila\n"
+                    + " 3 Eliminar dato\n"
+                    + " 4 Ordenar alfabeticamente\n"
+                    + " 5 Agregar dato de manera manual\n"
+                    + " 6 salir ☻\n");
+            switch (opt = sc.nextInt()) {
+                case 1:
+                    n.Llenar();
+                    break;
+                case 2:
+                    n.Mostrar();
+                    break;
+                case 3:
+                    n.Eliminar();
+                    break;
+                case 4:
+                    n.Ordenar();
+
+                    break;
+                case 5:
+                    System.out.println("ingresa el dato");
+                    char i = sc.next().charAt(0);
+                    n.Insertar(i);
+                    break;
+            }
+        } while (opt != 7);
+
+    }
+}
